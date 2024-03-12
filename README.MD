@@ -37,10 +37,10 @@ cd Admin-panel
 3. Installation
 
 ```bash
-npm install
+npm install --force
 ```
 
-5. Usage
+4. Usage
 
 Start the development server:
 

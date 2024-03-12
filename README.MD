@@ -27,3 +27,9 @@ Follow these steps to run the project locally:
 
 ```bash
 git clone https://github.com/Niraj1412/Admin-panel.git
+
+Navigate to the project directory:
+
+```bash
+cd Admin-panel
+

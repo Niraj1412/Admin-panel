@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { CrudFilter, useList } from "@refinedev/core";
 import dayjs from "dayjs";
 import Stats from "../../components/dashboard/Stats";
@@ -7,12 +7,14 @@ import { ResponsiveBarChart } from "../../components/dashboard/ResponsiveBarChar
 import { TabView } from "../../components/dashboard/TabView";
 import { RecentSales } from "../../components/dashboard/RecentSales";
 import { IChartDatum, TTab } from "../../interfaces";
+import Skeleton from "@mui/material/Skeleton";
+import "./Dashboard.css"; 
 
 const filters: CrudFilter[] = [
   {
     field: "start",
     operator: "eq",
-    value: dayjs()?.subtract(7, "days")?.startOf("day"),
+    value: dayjs().subtract(7, "days").startOf("day"),
   },
   {
     field: "end",
@@ -22,6 +24,16 @@ const filters: CrudFilter[] = [
 ];
 
 export const Dashboard: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const { data: dailyRevenue } = useList<IChartDatum>({
     resource: "dailyRevenue",
     filters,
@@ -54,10 +66,14 @@ export const Dashboard: React.FC = () => {
   const memoizedOrdersData = useMemoizedChartData(dailyOrders);
   const memoizedNewCustomersData = useMemoizedChartData(newCustomers);
 
+  const renderLabelWithSkeleton = (label: string) => {
+    return loading ? <Skeleton variant="text" width={120} height={20} /> : label;
+  };
+
   const tabs: TTab[] = [
     {
       id: 1,
-      label: "Daily Revenue",
+      label: renderLabelWithSkeleton("Daily Revenue"),
       content: (
         <ResponsiveAreaChart
           kpi="Daily revenue"
@@ -71,7 +87,7 @@ export const Dashboard: React.FC = () => {
     },
     {
       id: 2,
-      label: "Daily Orders",
+      label: renderLabelWithSkeleton("Daily Orders"),
       content: (
         <ResponsiveBarChart
           kpi="Daily orders"
@@ -85,7 +101,7 @@ export const Dashboard: React.FC = () => {
     },
     {
       id: 3,
-      label: "New Customers",
+      label: renderLabelWithSkeleton("New Customers"),
       content: (
         <ResponsiveAreaChart
           kpi="New customers"

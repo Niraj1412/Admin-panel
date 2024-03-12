@@ -59,3 +59,10 @@ export type TTab = {
   label: string;
   content: JSX.Element;
 };
+
+export interface IChartDatum {
+  date: string;
+  value: string;
+}
+
+

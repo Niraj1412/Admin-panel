@@ -59,5 +59,5 @@ This project is licensed under the MIT License.
 
 ## Here are the Scrrenshots
 
-![Dashboard](https://drive.google.com/file/d/1YAy0QZY5LghhJsqQTmv4c5cvBfIRvhTI/view?usp=sharing)
+![Dashboard](https://drive.google.com/file/d/1oEVsWDg6PurNNUrePP4INh60hGxDxnTm/view?usp=sharing)
 

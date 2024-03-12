@@ -34,8 +34,24 @@ git clone https://github.com/Niraj1412/Admin-panel.git
 cd Admin-panel
 ```
 
-### Installation
+3. Installation
 
 ```bash
 npm install
 ```
+
+5. Usage
+
+Start the development server:
+
+```bash
+npm start
+```
+
+Open your browser and go to http://localhost:3000 to view the application.
+
+##Contributing
+Contributions are welcome! Feel free to submit bug reports, feature requests, or pull requests.
+
+##License
+This project is licensed under the MIT License.
